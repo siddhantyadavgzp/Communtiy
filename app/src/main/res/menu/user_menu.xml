@@ -6,19 +6,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_channels"
-            android:icon="@drawable/ic_home"
+            android:icon="@drawable/ic_channel"
             android:title="Channels" />
         <item
             android:id="@+id/nav_join_channels"
-            android:icon="@drawable/ic_account"
+            android:icon="@drawable/ic_join_channel"
             android:title="Join Channels" />
         <item
             android:id="@+id/nav_account"
-            android:icon="@drawable/ic_history"
+            android:icon="@drawable/ic_account"
             android:title="Account Details" />
         <item
             android:id="@+id/nav_help"
-            android:icon="@drawable/ic_border_color_black_24dp"
+            android:icon="@drawable/ic_help"
             android:title="Help" />
 
 
