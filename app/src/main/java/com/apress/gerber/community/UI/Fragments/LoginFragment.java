@@ -2,11 +2,18 @@ package com.apress.gerber.community.UI.Fragments;
 
 import
         android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +58,7 @@ public class LoginFragment extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            getFragmentManager().beginTransaction().replace(R.id.main_container,new MainBodyFragment()).commit();
+            getFragmentManager().beginTransaction().replace(R.id.main_container,new MainBodyFragment(),"crazy_stuff").commit();
             }
         });
     }
