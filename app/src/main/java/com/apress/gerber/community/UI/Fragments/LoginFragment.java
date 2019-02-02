@@ -51,7 +51,7 @@ public class LoginFragment extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            getFragmentManager().beginTransaction().replace(R.id.main_container,new MainBodyFragment()).commit();
             }
         });
     }
