@@ -18,13 +18,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.apress.gerber.community.Interface.IOnBackPressed;
 import com.apress.gerber.community.R;
 import com.apress.gerber.community.UI.Fragments.InternalFragments.AccountDetails;
 import com.apress.gerber.community.UI.Fragments.InternalFragments.Channels;
 import com.apress.gerber.community.UI.Fragments.InternalFragments.Help;
 import com.apress.gerber.community.UI.Fragments.InternalFragments.JoinChannels;
+import com.apress.gerber.community.Utlity.PHPConstant;
+import com.apress.gerber.community.Utlity.RequestHandler;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainBodyFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener,IOnBackPressed {
     private DrawerLayout drawerLayout;
@@ -95,7 +109,9 @@ public class MainBodyFragment extends Fragment implements NavigationView.OnNavig
                 break;
             case R.id.nav_help:
                 help = new Help();
+
                 getFragmentManager().beginTransaction().replace(R.id.main_body_fragment, help, "help").commit();
+
                 break;
             case R.id.nav_exit:
 
@@ -131,5 +147,37 @@ public class MainBodyFragment extends Fragment implements NavigationView.OnNavig
         b = (acc != null && acc.isVisible()) || (join != null && join.isVisible()) || (help != null && help.isVisible());
         return b;
     }
+//    public void newMethod(){
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+//                PHPConstant.URL_REGISTER,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(response);
+//                            Toast.makeText(getActivity(), jsonObject.getString("m"), Toast.LENGTH_LONG).show();
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
+//                    }
+//                }) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("name","the fuck");
+//                params.put("currentchat","roorkee_anime");
+//                return params;
+//            }
+//        };
+//        RequestHandler.getInstance(getActivity()).addToRequestQueue(stringRequest);
+//    }
 
 }

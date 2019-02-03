@@ -53,8 +53,8 @@ public class JoinChannels extends Fragment {
         }));
         List<ChannelsInRegion> channelNames = new ArrayList<>();
         for (int i = 0; i < 10; i++)
-            channelNames.add(new ChannelsInRegion("the fuck " + i));
-        adapter.setCommunityDetails(channelNames);
+            channelNames.add(new ChannelsInRegion("channel name " + i));
+        adapter.setCommunityDetails(channelNames,true);
     }
 
 

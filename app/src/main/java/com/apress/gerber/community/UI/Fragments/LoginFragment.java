@@ -21,10 +21,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.apress.gerber.community.R;
+import com.apress.gerber.community.Utlity.PHPConstant;
+import com.apress.gerber.community.Utlity.RequestHandler;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginFragment extends Fragment {
     private View viewContainer;
@@ -66,6 +79,43 @@ public class LoginFragment extends Fragment {
 
 
 
+    public void newMethod(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                PHPConstant.URL_REGISTER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            Toast.makeText(getActivity(), jsonObject.getString("m"), Toast.LENGTH_LONG).show();
+                            if (jsonObject.getString("the fucking code that is requi").equals("Yes"))
+                            {
+
+                                getFragmentManager().beginTransaction().replace(R.id.main_container, new SignUpFragment()).addToBackStack(null).commit();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("name","the fucking name");
+                params.put("password","roorkee_anime");
+                params.put("m","1");
+                return params;
+            }
+        };
+        RequestHandler.getInstance(getActivity()).addToRequestQueue(stringRequest);
+    }
 
 
 

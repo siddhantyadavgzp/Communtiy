@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/channels_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="what the fuck this is the home"
-        />
+        android:orientation="vertical"
+        android:layout_above="@+id/add_channel"
+        tools:listitem="@layout/card_view_join_channels"/>
 
 
 
